@@ -47,3 +47,26 @@ bower.json
 # Ignore node_modules
 node_modules/
 
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/public/packs
+/public/packs-test
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+
+# custom rule
+config/database.yml
+config/settings.yml
+
+# db schema.rb
+db/schema.rb
+
+# uploads
+public/uploads/*
+data/*
+
+# deploy settings
+config/deploy/production.rb
