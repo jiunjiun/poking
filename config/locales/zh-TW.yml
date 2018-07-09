@@ -1,0 +1,155 @@
+zh-TW:
+  title: Poking.io
+
+  home:     首頁
+  sign_in:  登入
+  sign_up:  註冊
+  sign_out: 登出
+
+  confirm_email:    確認電子信箱
+  forgot_password:  忘記密碼
+
+  # 後台
+  backend:      後台
+  back_fontend: 回前台
+  back_root:    回首頁
+
+  admin:
+    title:
+
+  meta:
+    desc:
+    keywords:
+
+  helpers:
+    you_are_here:               '目前在:'
+    are_you_sure:               確定刪除嗎?
+    index:                      總覽
+    list:                       清單
+    add:                        新增
+    edit:                       修改
+    show:                       檢視
+    preview:                    預覽
+    preview_model:              預覽模式
+    update:                     更新
+    delete:                     刪除
+    back:                       返回
+    send:                       送出
+    send_order:                 送出訂單
+    status:                     狀態
+    posted_at:                  '發佈時間:'
+    download:                   下載
+    upload:                     上傳
+    attachment:                 附件
+    description:                描述
+    password_change:            密碼修改
+    top:                        最新文章
+    more_option:                更多選項
+    read_more:                  繼續閱讀
+    page_name:                  頁面
+    last_time:                  最後更新
+    upload_photos:              圖片上傳
+    drop_files_here:            拖拉圖片到這
+    or_click_to_pick_manually:  或點擊上傳
+    back_page:                  上一頁
+    continue:                   繼續
+    preview:                    預覽
+    link:                       連結
+    plz_select:                 請選擇
+    profile:                    個人資料
+    update_password:            修改密碼
+    next_step:                  下一步
+    as_above:                   同上
+    invoice:                    發票
+    export:                     匯出
+    manual_pay:                 手動付款
+    refund:                     退款
+    are_you_sure_manual_pay:    請確認統一編號、手機條碼，確定手動付款?
+    is_deleted:                 (該用戶已刪除)
+    not_authorized_access:      無權限存取
+    pay_now:                    線上付款
+    buy:                        購買
+    cash_pay:                   現金付款
+    credit_pay:                 刷卡機付款
+    scan_card:                  掃描卡片
+    revoked:                    撤消卡片
+    are_you_sure_refund:        確認退款?
+    are_you_sure_gift:          確認贈送?
+    gift:                       贈送
+    product:                    商品
+    quantity:                   數量
+    import:                     匯入
+    clear:                      清除
+    browse:                     瀏覽
+    choose_file:                選擇檔案...
+
+
+    successfully_created: 新增成功 # Your profile was successfully created.
+    successfully_updated: 更新成功 # Your profile was successfully updated.
+    successfully_destroy: 刪除成功 # Your profile was successfully destroy.
+    create_fail:          新增失敗, %{message}
+    update_fail:          更新失敗, %{message}
+    destroy_fail:         刪除失敗, %{message}
+    successfully_pay:     交易成功
+    pay_fail:             交易失敗
+    successfully_send:    成功發送
+
+    search:
+      result: '搜尋: "%{result}"，找到 %{count} 項'
+      placeholder: search...
+
+    submit:
+      create: 新增
+      update: 更新
+
+      user:
+        update: 更新資料
+        update_password: 更新密碼
+      operator:
+        update: 更新資料
+        update_password: 更新密碼
+
+  users:
+    dont_have_an_account_yet:   還沒有帳號?
+    already_have_an_account:    已經註冊?
+    dont_get_confirmation_mail: 沒有收到驗證信?
+    create_account:      建立帳號
+    forgot_password:     忘記密碼?
+    send_reset_password: 發送
+    password_change:     密碼變更
+    remember_me:         Remember me
+    resend_confirmation: 重發驗證信
+    resent_confirmaction_desc: 填入您的 email，將會重新發送驗證信
+    send_confirmaction:  重新發送
+    reset_password_desc: 填入您的 email，將會寄重設密碼信
+    send_password_reset: 寄送重設密碼信
+
+  weeks:
+    - 星期日
+    - 星期一
+    - 星期二
+    - 星期三
+    - 星期四
+    - 星期五
+    - 星期六
+
+  date:
+    formats:
+      yymmdd:   '%Y年%m月%d日'
+      yymmdd_a: '%Y年%m月%d日 (%a)'
+      mmdd_a:   '%m月%d日 (%a)'
+
+  time:
+    formats:
+      yymmdd: '%Y年%m月%d日'
+      mmddyy: '%m月%d日%Y'
+      yymmdd_s: '%Y/%m/%d'
+      ymds: '%Y-%m-%d %T'
+      ymdhm: '%Y-%m-%d %H:%M'
+      long: '%Y年%m月%d日 %T'
+      hs:   '%H:%M'
+
+  will_paginate:
+    previous_label: "上一頁"
+    next_label: "下一頁"
+    page_gap: "&hellip;"

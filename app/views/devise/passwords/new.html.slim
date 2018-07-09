@@ -1,0 +1,36 @@
+.authentication-wrapper.authentication-2.px-4
+  .authentication-inner.py-5
+    /! Form
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'card' }) do |f|
+      .p-4.p-sm-5
+        /! Logo
+        .d-flex.justify-content-center.align-items-center.pb-2.mb-4
+          .ui-w-60
+            .w-100.position-relative style=("padding-bottom: 54%")
+              svg.w-100.h-100.position-absolute viewbox=("0 0 148 80") xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                defs
+                  lineargradient#a gradientunits="userSpaceOnUse" x1="46.49" x2="62.46" y1="53.39" y2="48.2"
+                    stop offset="0" stop-opacity=".25"
+                    stop offset=".3" stop-opacity=".1"
+                    stop offset=".9" stop-opacity="0"
+                  lineargradient#e x1="76.9" x2="92.64" xlink:href="#a" y1="26.38" y2="31.49"
+                  lineargradient#d x1="107.12" x2="122.74" xlink:href="#a" y1="53.41" y2="48.33"
+                path.fill-primary d="M121.36,0,104.42,45.08,88.71,3.28A5.09,5.09,0,0,0,83.93,0H64.27A5.09,5.09,0,0,0,59.5,3.28L43.79,45.08,26.85,0H.1L29.43,76.74A5.09,5.09,0,0,0,34.19,80H53.39a5.09,5.09,0,0,0,4.77-3.26L74.1,35l16,41.74A5.09,5.09,0,0,0,94.82,80h18.95a5.09,5.09,0,0,0,4.76-3.24L148.1,0Z" transform="translate(-.1)"
+                path d="M52.19,22.73l-8.4,22.35L56.51,78.94a5,5,0,0,0,1.64-2.19l7.34-19.2Z" fill="url(#a)" transform="translate(-.1)"
+                path d="M95.73,22l-7-18.69a5,5,0,0,0-1.64-2.21L74.1,35l8.33,21.79Z" fill="url(#e)" transform="translate(-.1)"
+                path d="M112.73,23l-8.31,22.12,12.66,33.7a5,5,0,0,0,1.45-2l7.3-18.93Z" fill="url(#d)" transform="translate(-.1)"
+        /! / Logo
+        h5.text-center.text-muted.font-weight-normal.mb-4 Reset Your Password
+        hr.mt-0.mb-4/
+        p.text-center
+          = t('users.reset_password_desc')
+          / | Enter your email address and we will send you a link to confirmation.
+        .form-group
+          == f.text_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'
+        == f.button :submit, t('users.send_password_reset'), class: 'btn btn-primary btn-block'
+
+      .card-footer.py-3.px-4.px-sm-5
+        .text-center.text-muted
+          = t('users.already_have_an_account')
+          | &nbsp;&nbsp;
+          == link_to t('sign_in'), new_user_session_path
