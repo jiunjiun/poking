@@ -5,10 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, authentication_keys: [:login]
 
+  has_many :observers
+  has_many :senders
+
   validates :email, uniqueness: true
   validates :username, uniqueness: true, presence: true
 
-  before_create  :setup
+  before_create :setup
+  after_create  :setup_sender
 
   attr_writer :login
 
@@ -32,5 +36,9 @@ class User < ApplicationRecord
 
   def setup_name
     self.name = self.username
+  end
+
+  def setup_sender
+    self.senders.create! name: self.name, email: self.email
   end
 end
