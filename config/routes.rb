@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :observers, except: [:index]
+
     root 'home#index'
   end
 end

@@ -1,0 +1,26 @@
+.d-flex.justify-content-between.align-items-center.align-items-end.py-2.mb-4
+  h1.font-weight-bold.mb-0= observer.name
+  .btn-group.btn-group-sm
+    == link_to t('helpers.edit'), edit_admin_observer_path(observer), class: 'btn btn-primary'
+    == link_to t('helpers.delete'), admin_observer_path(observer), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'btn btn-danger'
+hr/
+
+.card.mb-2
+  .card-header
+    a.d-flex.justify-content-between.text-dark.collapsed aria-expanded="false" data-toggle="collapse" href="#accordion2-1"
+      = t('observers.info')
+      .collapse-icon
+  #accordion2-1.collapse data-parent="#accordion2" style=""
+    ul.list-group.list-group-flush.px-2
+      li.list-group-item
+        strong
+          = t('simple_form.labels.observer.host')
+          | :&nbsp;&nbsp;
+        = link_to observer.host, observer.host, target: '_blank'
+      li.list-group-item
+        strong
+          = t('simple_form.labels.observer.interval')
+          | :&nbsp;&nbsp;
+        = observer.interval
+
+

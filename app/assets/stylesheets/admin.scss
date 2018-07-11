@@ -1,3 +1,4 @@
+//= require Appwork/fonts/fontawesome
 //= require Appwork/fonts/ionicons
 
 //= require Appwork/rtl/bootstrap
@@ -6,4 +7,10 @@
 //= require Appwork/rtl/colors
 //= require Appwork/rtl/uikit
 
+//= require bootstrap-slider/bootstrap-slider
+
 //= require Appwork/demo
+
+.fs-20 {
+  font-size: 20px;
+}

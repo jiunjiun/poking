@@ -1,0 +1,12 @@
+== simple_form_for [:admin, observer], html: { autocomplete: 'off', multipart: true } do |f|
+  .card.mb-4
+    .card-body
+      == f.input :name, required: true
+      == f.input :host, as: :url, required: true
+      == f.input :interval, collection: interval_range, prompt: t('helpers.plz_select'), required: true
+      / == f.input :interval, input_html: { data: {provide: "slider", 'slider-ticks': "#{interval_range}", 'slider-ticks-labels': "#{interval_range}", 'slider-min': '180', 'slider-max': '1440', 'slider-step': 60, 'slider-value': observer.interval}}
+
+    .card-footer.text-muted
+      == f.button :submit, class: 'btn-primary btn-3d'
+      | &nbsp;&nbsp;
+      == link_to t('helpers.back'), admin_root_path, class: 'btn btn-default btn-3d'

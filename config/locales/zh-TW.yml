@@ -15,7 +15,8 @@ zh-TW:
   back_root:    回首頁
 
   admin:
-    title:
+    observer: Observer
+
 
   meta:
     desc:
@@ -123,6 +124,19 @@ zh-TW:
     send_confirmaction:  重新發送
     reset_password_desc: 填入您的 email，將會寄重設密碼信
     send_password_reset: 寄送重設密碼信
+
+  observers:
+    info:   資訊
+
+  simple_form:
+    required:
+      text: 'required'
+      mark: ''
+    labels:
+      observer:
+        name:     名稱
+        interval: 間隔時間
+        host:     URL
 
   weeks:
     - 星期日
