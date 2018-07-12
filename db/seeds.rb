@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin = User.new({ email: 'admin@com.tw', password: '12345678', username: 'admin' })
-admin.confirm
-admin.save
+user = User.new({ email: 'admin@com.tw', password: '12345678', username: 'admin' })
+user.skip_confirmation!
+user.save
+
+user.observers.create!({
+  name: 'test',
+  url: 'http://www.google.com',
+  interval: 5,
+})
