@@ -16,6 +16,12 @@ class User < ApplicationRecord
 
   attr_writer :login
 
+  module Role
+    ADMIN    = 'admin'
+    BUSINESS = 'business'
+    USER     = 'user'
+  end
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -27,6 +33,14 @@ class User < ApplicationRecord
 
   def login
     @login || self.username || self.email
+  end
+
+  User::Role.constants.each do |role|
+    class_eval %Q{
+      def is_#{role.downcase}?
+        self.role == '#{role.downcase}'
+      end
+    }
   end
 
   private
