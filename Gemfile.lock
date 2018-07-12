@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/ActsAsParanoid/acts_as_paranoid.git
+  revision: 785e83b9239e1500907105d95e5c42ccf9eccceb
+  specs:
+    acts_as_paranoid (0.6.0)
+      activerecord (>= 4.2, < 6.0)
+      activesupport (>= 4.2, < 6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -370,6 +378,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  acts_as_paranoid!
   awesome_print
   bootsnap (>= 1.1.0)
   bootstrap-will_paginate

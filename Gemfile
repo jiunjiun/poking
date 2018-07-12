@@ -171,7 +171,7 @@ gem 'mailgun_rails'
 gem 'letter_opener', group: :development
 
 # soft delete
-# gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
+gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 
 # google reCAPTCHA
 # gem "recaptcha", require: "recaptcha/rails"
