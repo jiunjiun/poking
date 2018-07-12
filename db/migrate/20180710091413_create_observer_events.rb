@@ -3,8 +3,8 @@ class CreateObserverEvents < ActiveRecord::Migration[5.2]
     create_table :observer_events do |t|
       t.references :observer, foreign_key: true
       t.string :event_type
-      t.float :response_time
-      t.integer :response_code
+      t.string :reason
+      t.integer :duration_at, default: nil
 
       t.timestamps
     end

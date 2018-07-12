@@ -5,7 +5,6 @@ class CreateObservers < ActiveRecord::Migration[5.2]
       t.string  :name
       t.string  :observer_type, index: true
       t.string  :status, default: Observer::Status::STARTED
-      t.boolean :paruse, index: true
       t.integer :interval, default: 5, comment: 'by minutes'
       t.string  :http_method, default: Observer::HttpMethod::GET
       t.string  :url
