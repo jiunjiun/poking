@@ -1,9 +1,59 @@
 .d-flex.justify-content-between.align-items-center.align-items-end.py-2.mb-4
   h1.font-weight-bold.mb-0= observer.name
   .btn-group.btn-group-sm
+    - case observer.status
+    - when Observer::Status::STARTED
+      == link_to t('observers.status.pause'), pause_admin_observer_path(observer), method: :post, class: 'btn btn-success'
+    - when Observer::Status::PAUSED
+      == link_to t('observers.status.start'), start_admin_observer_path(observer), method: :post, class: 'btn btn-success'
+
     == link_to t('helpers.edit'), edit_admin_observer_path(observer), class: 'btn btn-primary'
     == link_to t('helpers.delete'), admin_observer_path(observer), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'btn btn-danger'
 hr/
+
+.card.mb-4
+  h6.card-header.with-elements
+    .card-header-title Statistics
+    .card-header-elements.ml-auto
+    label.text.m-0
+      span.text-light.text-tiny.font-weight-semibold.align-middle
+        | SHOW STATS
+      span.switcher.switcher-sm.d-inline-block.align-middle.mr-0.ml-2
+        input.switcher-input checked="" type="checkbox" /
+        span.switcher-indicator
+          span.switcher-yes
+          span.switcher-no
+  .row.no-gutters.row-bordered
+    .col-md-8.col-lg-12.col-xl-8
+      .card-body
+        div style=("height: 210px;")
+          canvas#statistics-chart-1 height="420" style=("display: block; height: 210px; width: 719px;") width="1438"
+    .col-md-4.col-lg-12.col-xl-4
+      .card-body
+        /! Numbers
+        .row
+          .col-6.col-xl-5.text-muted.mb-3 Total sales
+          .col-6.col-xl-7.mb-3
+            span.text-big 10,332
+            sup.text-success +12%
+          .col-6.col-xl-5.text-muted.mb-3 Income amount
+          .col-6.col-xl-7.mb-3
+            span.text-big $1,534
+            sup.text-danger -5%
+          .col-6.col-xl-5.text-muted.mb-3 Total budget
+          .col-6.col-xl-7.mb-3
+            span.text-big $10,534
+            sup.text-success +12%
+          .col-6.col-xl-5.text-muted.mb-3 Page views
+          .col-6.col-xl-7.mb-3
+            span.text-big 21,332
+            sup.text-danger -12%
+          .col-6.col-xl-5.text-muted.mb-3 Completed tasks
+          .col-6.col-xl-7.mb-3
+            span.text-big 12
+            sup.text-success +12%
+        /! / Numbers
+
 
 .card.mb-2
   .card-header
@@ -14,9 +64,9 @@ hr/
     ul.list-group.list-group-flush.px-2
       li.list-group-item
         strong
-          = t('simple_form.labels.observer.host')
+          = t('simple_form.labels.observer.url')
           | :&nbsp;&nbsp;
-        = link_to observer.host, observer.host, target: '_blank'
+        = link_to observer.url, observer.url, target: '_blank'
       li.list-group-item
         strong
           = t('simple_form.labels.observer.interval')

@@ -84,7 +84,6 @@ zh-TW:
     browse:                     瀏覽
     choose_file:                選擇檔案...
 
-
     successfully_created: 新增成功 # Your profile was successfully created.
     successfully_updated: 更新成功 # Your profile was successfully updated.
     successfully_destroy: 刪除成功 # Your profile was successfully destroy.
@@ -127,6 +126,13 @@ zh-TW:
 
   observers:
     info:   資訊
+
+    status:
+      started:  已執行
+      paused:   已暫停
+
+      start:  開始監控
+      pause:  暫停監控
 
   simple_form:
     required:

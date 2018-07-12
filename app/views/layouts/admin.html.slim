@@ -28,14 +28,16 @@ html.default-style
 
         /! Layout container
         .layout-container
-          /! Layout sidenav
-          == render 'admin/common/sidenav'
-          /! / Layout sidenav
+          /! Layout sidenav   -----
+          / - unless is_dashboard?
+            == render 'admin/common/sidenav'
+          /! / Layout sidenav -----
           /! Layout content
           .layout-content
             /! Content
             .container-fluid.flex-grow-1.container-p-y
-              == yield
+              .container
+                == yield
 
             /! / Content
             /! Layout footer

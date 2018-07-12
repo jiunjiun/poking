@@ -1,2 +1,84 @@
-h1 Admin::Home#index
-p Find me in app/views/admin/home/index.html.slim
+.d-flex.justify-content-between.align-items-center.align-items-end.py-2.mb-4
+  h4.font-weight-bold.mb-0 Dashboard
+  ul.nav.nav-pills
+    li.nav-item
+      a.nav-link data-toggle="tab" href="#navs-top-home"
+        i.ion.ion-md-apps.d-block.fs-20
+    li.nav-item
+      a.nav-link data-toggle="tab" href="#navs-top-profile"
+        i.ion.ion-ios-list.d-block.fs-20
+  == link_to t('helpers.add'), new_admin_observer_path, class: 'btn btn-primary'
+
+/ .nav-tabs-top.mb-4
+/   .tab-content
+/     #navs-top-home.tab-pane.fade
+/       / p
+/         | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
+/         | synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+/     #navs-top-profile.tab-pane.fade
+/       p
+/         | Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+/         | booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente
+/         | labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus
+/         | tattooed echo park.
+
+.row#home_index
+  - current_user.observers.each do |observer|
+    .col-sm-6.col-xl-3
+      .card.mb-4
+        h6.card-header.with-elements
+          / i.ion.ion-md-cash
+          / | &nbsp;&nbsp;
+          = observer.name.upcase
+          .card-header-elements.ml-auto
+            .btn-group
+              button.btn.btn-sm.btn-default.icon-btn.borderless.btn-round.md-btn-flat.dropdown-toggle.hide-arrow aria-expanded="false" data-toggle="dropdown" type="button"
+                i.ion.ion-ios-more
+              #sales-dropdown-menu.dropdown-menu.dropdown-menu-right style="position: absolute; will-change: top), left; top: 26px; left: 26px;" x-placement="bottom-end"
+                == link_to t('helpers.show'), admin_observer_path(observer), class: 'dropdown-item'
+                == link_to t('helpers.edit'), edit_admin_observer_path(observer), class: 'dropdown-item'
+                == link_to t('helpers.delete'), admin_observer_path(observer), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'dropdown-item'
+
+        .d-flex.align-items-center.position-relative style="height:140px;"
+          .w-100.position-absolute style="height:140px;top:0;"
+            canvas#statistics-chart-5 height="280" style=("display: block; height: 140px; width: 275px;") width="550"
+          .w-100.text-center.display-2.text-success UP
+        / .text-center.mt-3.mb-4
+        /   | Sales today
+        / .card-footer.border-0.text-center.py-3
+        /   .row
+        /     .col
+        /       .text-muted.small.mb-1 Target
+        /       strong.text-big $1225
+        /     .col
+        /       .text-muted.small.mb-1 Current
+        /       strong.text-big $654
+
+
+  .col-sm-6.col-xl-3
+    .card.mb-4
+      h6.card-header.with-elements
+        i.ion.ion-md-cash
+        | &nbsp; Revenue
+        .card-header-elements.ml-auto
+          .btn-group
+            button.btn.btn-sm.btn-default.icon-btn.borderless.btn-round.md-btn-flat.dropdown-toggle.hide-arrow aria-expanded="false" data-toggle="dropdown" type="button"
+              i.ion.ion-ios-more
+            #sales-dropdown-menu.dropdown-menu.dropdown-menu-right style="position: absolute; will-change: top), left; top: 26px; left: 26px;" x-placement="bottom-end"
+              a.dropdown-item href="javascript:void(0)"  Action 1
+              a.dropdown-item href="javascript:void(0)"  Action 2
+
+      .d-flex.align-items-center.position-relative.mt-4 style="height:140px;"
+        .w-100.position-absolute style="height:140px;top:0;"
+          canvas#statistics-chart-5 height="280" style=("display: block; height: 140px; width: 275px;") width="550"
+        .w-100.text-center.text-xlarge 85
+      .text-center.mt-3.mb-4
+        | Sales today
+      .card-footer.border-0.text-center.py-3
+        .row
+          .col
+            .text-muted.small.mb-1 Target
+            strong.text-big $1225
+          .col
+            .text-muted.small.mb-1 Current
+            strong.text-big $654
