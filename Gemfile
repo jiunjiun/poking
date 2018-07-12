@@ -153,9 +153,9 @@ gem 'will_paginate-bootstrap'
 gem 'bootstrap-will_paginate'
 
 # xlsx
-# gem 'rubyzip', '~> 1.1.0'
-# gem 'axlsx', '2.1.0.pre'
-# gem 'axlsx_rails'
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
 
 #
 gem 'active_hash'
