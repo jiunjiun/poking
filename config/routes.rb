@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  require 'sidekiq/web'
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users, controllers: {
     sessions:       'users/sessions',
     passwords:      'users/passwords',
@@ -18,7 +23,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :observers, except: [:index]
+    resources :observers, except: [:index] do
+      member do
+        post :start
+        post :pause
+      end
+    end
 
     root 'home#index'
   end

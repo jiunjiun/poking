@@ -35,11 +35,14 @@ module Kvs
         { id: 3, code: ::Observer::Type::KEY_WORD,  name: I18n.t('observers.type.key_word') },
       ]
     end
+  end
 
-    class Interval < KeyValues::Base
-      # self.data = [
-      #   { id: 1, value: 1,     name: I18n.t('products.expiration_action.keep') },
-      # ]
+  module ObserverEvent
+    class Type < KeyValues::Base
+      self.data = [
+        { id: 1, code: ::ObserverEvent::Type::UP,     name: I18n.t('observer_events.type.up') },
+        { id: 2, code: ::ObserverEvent::Type::DOWN,   name: I18n.t('observer_events.type.down') },
+      ]
     end
   end
 end

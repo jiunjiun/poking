@@ -35,14 +35,24 @@ class Admin::ObserversController < AdminController
     redirect_to admin_root_path, notice: t('helpers.successfully_destroy')
   end
 
+  def start
+    observer.start!
+    redirect_to admin_observer_path(observer), notice: t('helpers.successfully_updated')
+  end
+
+  def pause
+    observer.paruse!
+    redirect_to admin_observer_path(observer), notice: t('helpers.successfully_updated')
+  end
+
   private
   def observer_params
-    params.require(:observer).permit(:name, :observer_type, :interval, :host)
+    params.require(:observer).permit(:name, :observer_type, :interval, :url)
   end
 
   def intervals
     _intervals = []
-    (5..120).each do |i|
+    (1..120).each do |i|
       _intervals << [
         "#{i} minutes", i
       ]
