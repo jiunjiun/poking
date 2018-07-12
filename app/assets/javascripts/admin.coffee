@@ -13,12 +13,16 @@
 
 # libs
 #= require validate/validate
+#= require datatables/datatables
 #= require bootstrap-slider/bootstrap-slider
+#= require chartjs/chartjs
 
 #= require_self
 #= require_tree ./admin
 
 $ ->
+  $('[data-toggle="tooltip"]').tooltip()
+
   unless $('.simple_form.ignore').length
     $('.simple_form').validate
       ignore: '.ignore'

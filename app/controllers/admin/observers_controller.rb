@@ -1,7 +1,11 @@
 class Admin::ObserversController < AdminController
   expose :observers, -> { current_user.observers }
   expose :observer, scope: -> { observers }
+  expose :observer_events, -> { observer.events }
   expose :interval_range, -> { intervals }
+  expose :statistics, -> { observer.statistics }
+
+  before_action :setup_gon, only: [:show]
 
   def show
   end
@@ -45,6 +49,17 @@ class Admin::ObserversController < AdminController
     redirect_to admin_observer_path(observer), notice: t('helpers.successfully_updated')
   end
 
+  def events
+    respond_to do |format|
+      format.xlsx
+      format.json {
+        events_scope
+        # events_filters
+        events_order
+      }
+    end
+  end
+
   private
   def observer_params
     params.require(:observer).permit(:name, :observer_type, :interval, :url)
@@ -65,5 +80,49 @@ class Admin::ObserversController < AdminController
     end
 
     _intervals
+  end
+
+  def events_scope
+    @result = observer_events
+  end
+
+  def events_filters
+    search_params = params[:search][:value]
+
+    if search_params.present?
+      search_params = "%#{search_params}%"
+      @result       = @result.where("name like ? or
+                                     barcode like ?",
+                                     search_params, search_params, search_params)
+    end
+  end
+
+  def events_order
+    column_name = params[:columns][params[:order]["0"][:column]][:name]
+    order       = params[:order]["0"][:dir]
+
+    if column_name.present? and order.present?
+      @result = @result.order("#{column_name} #{order}")
+    else
+      @result = @result.order(created_at: :desc)
+    end
+
+    @result_count = @result.count
+    @result       = @result.offset(params[:start]).limit(params[:length])
+  end
+
+  def setup_gon
+    labels = []
+    data = []
+    observer.lastday_records.each do |event|
+      next unless event.response_time
+      labels << event.created_at.strftime('%H:%M')
+      data << (event.response_time * 1000).to_i
+    end
+
+    gon.chart = {
+      labels: labels,
+      data: data,
+    }
   end
 end

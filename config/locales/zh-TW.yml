@@ -134,6 +134,20 @@ zh-TW:
       start:  開始監控
       pause:  暫停監控
 
+    uptime_statistics: 統計資訊
+    response_time:     回應時間
+    last_24_hours:     過去24小時
+    last_7_days:       過去7天
+    last_month:        過去1個月
+    events:            活動資訊
+
+    export:
+      fields:
+        event_type:   類型
+        created_at:   時間
+        reason:       原因
+        duration_at:  持續時間
+
   simple_form:
     required:
       text: 'required'
@@ -143,6 +157,12 @@ zh-TW:
         name:     名稱
         interval: 間隔時間
         host:     URL
+        url:      URL
+      observer_event:
+        event_type:   類型
+        created_at:   時間
+        reason:       原因
+        duration_at:  持續時間
 
   weeks:
     - 星期日

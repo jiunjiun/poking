@@ -1,0 +1,24 @@
+sheet_top_fields = [
+  t('observers.export.fields.event_type'),
+  t('observers.export.fields.created_at'),
+  t('observers.export.fields.reason'),
+  t('observers.export.fields.duration_at'),
+]
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: t('observers.events')) do |sheet|
+  sheet.add_row sheet_top_fields
+  observer_events.order(created_at: :desc).each do |event|
+    sheet.add_row [
+      event.event_type.upcase,
+      event.created_at,
+      event.reason,
+      observer_event_duration_at(event),
+    ], types: [
+      :string,
+      :time,
+      :string,
+      :string,
+    ]
+  end
+end

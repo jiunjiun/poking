@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       member do
         post :start
         post :pause
+        get  :events
       end
     end
 
