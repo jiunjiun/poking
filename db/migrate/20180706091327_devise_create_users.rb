@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :username
       t.string :name
+      t.string :role, default: User::Role::USER
 
       t.timestamps null: false
     end
@@ -42,6 +43,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
+    add_index :users, :role
     # add_index :users, :unlock_token,         unique: true
   end
 end
