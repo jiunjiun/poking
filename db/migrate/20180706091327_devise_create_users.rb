@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :username
       t.string :name
       t.string :role, default: User::Role::USER
+      t.string :time_zone, default: 'UTC'
 
       t.timestamps null: false
     end
