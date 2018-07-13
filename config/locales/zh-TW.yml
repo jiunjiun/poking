@@ -17,6 +17,7 @@ zh-TW:
   admin:
     observer: Observer
     sender:   Notify
+    profile:  Profile
 
 
   meta:
@@ -158,6 +159,9 @@ zh-TW:
       text: 'required'
       mark: ''
     labels:
+      user:
+        name:      名字
+        time_zone: 時區
       observer:
         name:     名稱
         interval: 間隔時間

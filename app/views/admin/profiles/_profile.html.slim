@@ -1,0 +1,10 @@
+.container
+  == simple_form_for [:admin, current_user], url: admin_profiles_path, html: { autocomplete: 'off', multipart: true } do |f|
+    == f.input :name, required: true
+
+    .form-group
+      label.form-label= t('simple_form.labels.user.time_zone')
+      == f.time_zone_select :time_zone, nil, {}, class: 'custom-select'
+    .mb-4
+
+    == f.button :submit, class: 'btn btn-primary btn-sm'

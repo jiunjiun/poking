@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     end
 
     resources :senders
+    resource  :profiles, only: [:edit, :update]
 
     root 'home#index'
   end

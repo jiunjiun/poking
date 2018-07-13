@@ -118,6 +118,10 @@ nav#layout-navbar.layout-navbar.navbar.navbar-expand-lg.align-items-lg-center.bg
             i.ion.ion-ios-mail.text-primary
             | &nbsp;&nbsp;
             = t('admin.sender')
+          == link_to edit_admin_profiles_path, class: 'dropdown-item' do
+            i.ion.ion-md-person.text-primary
+            | &nbsp;&nbsp;
+            = t('admin.profile')
           / a.dropdown-item href="javascript:void(0)"
           /   i.ion.ion-ios-mail.text-lightest
           /   | &nbsp; Messages
