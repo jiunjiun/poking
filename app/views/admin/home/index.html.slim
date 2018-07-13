@@ -31,7 +31,7 @@
           / | &nbsp;&nbsp;
           / = observer.name.upcase
           == link_to observer.name.upcase, admin_observer_path(observer), class: 'text-dark'
-          | &nbsp;
+          | &nbsp;&nbsp;
           == observer_event_type_tag(observer.events.last.event_type)
           .card-header-elements.ml-auto
             .btn-group

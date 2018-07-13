@@ -13,7 +13,7 @@
     == link_to t('helpers.edit'), edit_admin_observer_path(observer), class: 'btn btn-primary'
     == link_to t('helpers.delete'), admin_observer_path(observer), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'btn btn-danger'
 
-.card.mb-4
+.card.mb-4#observer_show_statistics
   h6.card-header.with-elements
     .card-header-title= t('observers.uptime_statistics')
   .row.no-gutters.row-bordered
@@ -29,7 +29,7 @@
             = statistics[:lastday_response_time_avg]
             | ms)
         div style="height: 210px;"
-          canvas#statistics-chart-1
+          canvas#statistics-chart
     .col-md-12.col-lg-12.col-xl-3
       .card-body
         /! Numbers
@@ -92,6 +92,22 @@
           th.text-center data-name="duration"
             = t('simple_form.labels.observer_event.duration_at')
 
+/ .card.mb-4
+/   .card-header.with-elements
+/     a.d-flex.justify-content-between.text-dark.collapsed aria-expanded="false" data-toggle="collapse" href="#accordion2-1"
+/       = t('observers.senders')
+
+/     .card-header-elements.ml-md-auto
+/       == link_to t('helpers.edit'), events_admin_observer_path(observer, format: 'xlsx'), class: 'btn btn-xs btn-primary'
+
+/   #accordion2-1.collapse data-parent="#accordion2"
+/     ul.list-group.list-group-flush.px-2
+/       - observer.senders.each do |sender|
+/         li.list-group-item
+/           strong
+/             = sender.name
+/             | &nbsp;-&nbsp;
+/             = sender.email
 
 .card.mb-2
   .card-header
