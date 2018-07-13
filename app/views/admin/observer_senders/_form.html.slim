@@ -1,0 +1,38 @@
+== simple_form_for [:admin, observer, sender], method: :put, html: { autocomplete: 'off', multipart: true } do |f|
+  .card.mb-4
+    table.table.card-table
+      thead.thead-light
+        tr.d-flex
+          th.col-1
+          th.col-2.text-center= t('simple_form.labels.sender.name')
+          th.col-9.text-center= t('simple_form.labels.sender.email')
+      tbody
+        - observer.observer_senders.each do |observer_sender|
+          tr.d-flex
+            == hidden_field_tag('observer[observer_senders_attributes][][sender_id]', observer_sender.sender.id)
+            td.col-1 scope="row"
+              .form-group.float-right.mb-0
+                label.custom-control.custom-checkbox
+                  - if observer_sender.enable
+                    input.custom-control-input name="observer[observer_senders_attributes][][enable]" checked="#{observer_sender.enable}" value="1" type="checkbox" /
+                  - else
+                    input.custom-control-input name="observer[observer_senders_attributes][][enable]" value="1" type="checkbox" /
+                  span.custom-control-label
+            td.col-2.text-center= observer_sender.sender.name
+            td.col-9.text-left= observer_sender.sender.email
+        - current_user.senders.where.not(id: observer.observer_senders.pluck(:sender_id)).each do |sender|
+          tr.d-flex
+            == hidden_field_tag('observer[observer_senders_attributes][][sender_id]', sender.id)
+            td.col-1 scope="row"
+              .form-group.float-right.mb-0
+                label.custom-control.custom-checkbox
+                  input.custom-control-input name="observer[observer_senders_attributes][][enable]" type="checkbox" /
+                  span.custom-control-label
+            td.col-2.text-center= sender.name
+            td.col-9.text-left= sender.email
+
+
+    .card-footer.text-muted
+      == f.button :submit, t('helpers.edit'), class: 'btn-primary btn-3d'
+      | &nbsp;&nbsp;
+      == link_to t('helpers.back'), admin_observer_path(observer), class: 'btn btn-default btn-3d'

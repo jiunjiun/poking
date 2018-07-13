@@ -29,6 +29,13 @@ Rails.application.routes.draw do
         post :pause
         get  :events
       end
+
+      resource :observer_senders, only: [], path: :senders, as: :senders do
+        collection do
+          get :edit
+          put :update
+        end
+      end
     end
 
     resources :senders

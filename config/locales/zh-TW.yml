@@ -150,6 +150,9 @@ zh-TW:
         reason:       原因
         duration_at:  持續時間
 
+  observer_senders:
+    add_sender: 新增通知人員
+
   simple_form:
     required:
       text: 'required'

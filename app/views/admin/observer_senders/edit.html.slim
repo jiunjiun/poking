@@ -1,0 +1,16 @@
+.d-flex.justify-content-between.align-items-center.align-items-end.mb-4
+  h4.font-weight-bold.py-3.mb-0
+    span.text-muted.font-weight-light
+      = t('admin.observer')
+      | &nbsp;/&nbsp;
+      == link_to observer.name.upcase, admin_observer_path(observer), class: 'text-muted'
+      | &nbsp;/&nbsp;
+      = t('admin.sender')
+      | &nbsp;/&nbsp;
+    = t('helpers.new')
+
+  .btn-group.btn-group-sm
+    == link_to t('observer_senders.add_sender'), admin_senders_path, class: 'btn btn-primary'
+
+== render 'form'
+
