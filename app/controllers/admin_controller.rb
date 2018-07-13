@@ -1,8 +1,9 @@
 class AdminController < ApplicationController
-  before_action :authenticate_user!
+  expose :observers, -> { current_user.observers }
 
   layout 'admin'
 
+  before_action :authenticate_user!
   before_action :update_meta
 
   private

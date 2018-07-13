@@ -1,5 +1,4 @@
 class Admin::ObserverSendersController < AdminController
-  expose :observers, -> { current_user.observers }
   expose :observer, scope: -> { observers }
   expose :observer_senders, -> { observer.observer_senders }
   expose :senders, -> { observer.observer_senders.where(enable: true) }

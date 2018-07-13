@@ -4,12 +4,19 @@
     | &nbsp;
     - if observer.events.last
       == observer_event_type_tag(observer.events.last.event_type)
+    a.layout-sidenav-toggle.d-inline-block.text-muted.align-middle.ml-3 href="javascript:void(0)" style=("font-size: 14px")
+      i.ion.ion-md-menu.text-large.align-middle
+
   .btn-group.btn-group-sm
     - case observer.status
     - when Observer::Status::STARTED
-      == link_to t('observers.status.pause'), pause_admin_observer_path(observer), method: :post, class: 'btn btn-success'
+      == link_to pause_admin_observer_path(observer), method: :post, class: 'btn btn-success' do
+        i.ion.ion-ios-pause.mr-2
+        = t('observers.status.pause')
     - when Observer::Status::PAUSED
-      == link_to t('observers.status.start'), start_admin_observer_path(observer), method: :post, class: 'btn btn-success'
+      == link_to start_admin_observer_path(observer), method: :post, class: 'btn btn-success' do
+        i.ion.ion-ios-play.mr-2
+        = t('observers.status.start')
 
     == link_to t('helpers.edit'), edit_admin_observer_path(observer), class: 'btn btn-primary'
     == link_to t('helpers.delete'), admin_observer_path(observer), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'btn btn-danger'
