@@ -1,5 +1,5 @@
 module Admin::HomeHelper
-  def is_dashboard?
-    controller_name == 'home' and action_name == 'index'
+  def is_observer_page?
+    controller_name == 'observers'
   end
 end

@@ -1,5 +1,5 @@
 doctype html
-html.default-style
+html.default-style.layout-collapsed
   head
     meta charset="utf-8"
     meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"
@@ -31,7 +31,7 @@ html.default-style
         /! Layout container
         .layout-container
           /! Layout sidenav   -----
-          / - unless is_dashboard?
+          - if is_observer_page?
             == render 'admin/common/sidenav'
           /! / Layout sidenav -----
           /! Layout content
@@ -53,5 +53,4 @@ html.default-style
     /! / Layout wrapper
 
     / Content
-    / == yield
     == javascript_include_tag 'admin'

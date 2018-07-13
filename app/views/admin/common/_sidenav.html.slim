@@ -21,23 +21,12 @@
   /! Links
   ul.sidenav-inner.py-1
     /! Dashboards
-    li.sidenav-item
+    li.sidenav-item.open
       a.sidenav-link.sidenav-toggle href="javascript:void(0)"
         i.sidenav-icon.ion.ion-md-speedometer
-        div Dashboards
+        div= t('admin.observer')
       ul.sidenav-menu
-        li.sidenav-item
-          a.sidenav-link href="index.html"
-            div Dashboard 1
-        li.sidenav-item
-          a.sidenav-link href="dashboards_dashboard-2.html"
-            div Dashboard 2
-        li.sidenav-item
-          a.sidenav-link href="dashboards_dashboard-3.html"
-            div Dashboard 3
-        li.sidenav-item
-          a.sidenav-link href="dashboards_dashboard-4.html"
-            div Dashboard 4
-        li.sidenav-item
-          a.sidenav-link href="dashboards_dashboard-5.html"
-            div Dashboard 5
+        - observers.each do |observer|
+          li.sidenav-item
+            == link_to admin_observer_path(observer), class: 'sidenav-link' do
+              div= observer.name.upcase

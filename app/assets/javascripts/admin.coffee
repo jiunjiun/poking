@@ -1,5 +1,7 @@
 #= require rails-ujs
 
+#= require appwork_init
+
 # -- Core scripts --
 #= require Appwork/pace
 #= require jquery
