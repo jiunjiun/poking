@@ -74,15 +74,30 @@ class Observer < ApplicationRecord
 
     lastday_down_count = self.lastday_records.where(event_type: ObserverEvent::Type::DOWN).count
     lastday_count      = self.lastday_records.count
-    lastday_down_rate  = ((lastday_count - lastday_down_count) / lastday_count.to_f * 100).round(2)
+
+    if lastday_count == 0
+      lastday_down_rate = 0
+    else
+      lastday_down_rate  = ((lastday_count - lastday_down_count) / lastday_count.to_f * 100).round(2)
+    end
 
     last7day_down_count = self.last7day_records.where(event_type: ObserverEvent::Type::DOWN).count
     last7day_count      = self.last7day_records.count
-    last7day_down_rate  = ((last7day_count - last7day_down_count) / last7day_count.to_f * 100).round(2)
+
+    if last7day_count == 0
+      last7day_down_rate = 0
+    else
+      last7day_down_rate  = ((last7day_count - last7day_down_count) / last7day_count.to_f * 100).round(2)
+    end
 
     lastmonth_down_count = self.lastmonth_records.where(event_type: ObserverEvent::Type::DOWN).count
     lastmonth_count      = self.lastmonth_records.count
-    lastmonth_down_rate  = ((lastmonth_count - lastmonth_down_count) / lastmonth_count.to_f * 100).round(2)
+
+    if lastmonth_count == 0
+      lastmonth_down_rate = 0
+    else
+      lastmonth_down_rate  = ((lastmonth_count - lastmonth_down_count) / lastmonth_count.to_f * 100).round(2)
+    end
 
     @statistics ||= {
       lastday_response_time_avg: lastday_response_time_avg,
