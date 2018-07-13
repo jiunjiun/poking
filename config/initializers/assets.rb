@@ -19,3 +19,4 @@ Rails.application.config.assets.precompile += lib_files
 # folder are already added.
 Rails.application.config.assets.precompile += %w( sign.js sign.css )
 Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.config.assets.precompile += %w( confirmation.css )
