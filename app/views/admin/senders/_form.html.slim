@@ -1,0 +1,10 @@
+== simple_form_for [:admin, sender], html: { autocomplete: 'off', multipart: true } do |f|
+  .card.mb-4
+    .card-body
+      == f.input :name, required: true
+      == f.input :email, as: :email, required: true
+
+    .card-footer.text-muted
+      == f.button :submit, class: 'btn-primary btn-3d'
+      | &nbsp;&nbsp;
+      == link_to t('helpers.back'), admin_senders_path, class: 'btn btn-default btn-3d'

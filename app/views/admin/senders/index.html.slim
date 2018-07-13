@@ -1,0 +1,23 @@
+.d-flex.justify-content-between.align-items-center.align-items-end.py-2.mb-4
+  h1.font-weight-bold.mb-0
+    = t('admin.sender')
+  .btn-group.btn-group-sm
+    == link_to t('helpers.add'), new_admin_sender_path, class: 'btn btn-primary'
+
+.card
+  table.table.card-table
+    thead.thead-light
+      tr.d-flex
+        th.col-2
+        th.col-4.text-center= t('simple_form.labels.sender.name')
+        th.col-6.text-center= t('simple_form.labels.sender.email')
+    tbody
+      - senders.each do |sender|
+        tr.d-flex
+          td.col-2.text-center scope="row"
+            .btn-group.btn-group-sm
+              == link_to t('helpers.edit'), edit_admin_sender_path(sender), class: 'btn btn-primary'
+              == link_to t('helpers.delete'), admin_sender_path(sender), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'btn btn-danger'
+          td.col-4.text-center= sender.name
+          td.col-6.text-center= sender.email
+

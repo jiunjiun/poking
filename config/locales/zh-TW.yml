@@ -16,6 +16,7 @@ zh-TW:
 
   admin:
     observer: Observer
+    sender:   Notify
 
 
   meta:
@@ -140,6 +141,7 @@ zh-TW:
     last_7_days:       過去7天
     last_month:        過去1個月
     events:            活動資訊
+    senders:           通知人員
 
     export:
       fields:
