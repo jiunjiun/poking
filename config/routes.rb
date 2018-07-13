@@ -10,12 +10,11 @@ Rails.application.routes.draw do
     sessions:       'users/sessions',
     passwords:      'users/passwords',
     confirmations:  'users/confirmations',
-    passwords:      'users/passwords',
     # omniauth_callbacks: 'users/omniauth_callbacks'
   }, skip: :registrations
   devise_scope :user do
     resource :registration,
-      only: [:new, :create, :edit, :update],
+      only: [:new, :create],
       path: :users,
       path_names: { new: 'sign_up' },
       controller: 'users/registrations',
@@ -39,7 +38,9 @@ Rails.application.routes.draw do
     end
 
     resources :senders
-    resource  :profiles, only: [:edit, :update]
+    resource  :profiles, only: [:edit, :update] do
+      put :update_password
+    end
 
     root 'home#index'
   end
