@@ -2,7 +2,7 @@ h4.font-weight-bold.py-3.mb-4
   span.text-muted.font-weight-light
     = t('admin.sender')
     | &nbsp;/&nbsp;
-    == link_to sender.name, admin_sender_path(sender), class: 'text-muted'
+    == link_to sender.name, admin_senders_path, class: 'text-muted'
     | &nbsp;/&nbsp;
   = t('helpers.edit')
 

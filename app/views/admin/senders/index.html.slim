@@ -9,15 +9,16 @@
     thead.thead-light
       tr.d-flex
         th.col-2
-        th.col-4.text-center= t('simple_form.labels.sender.name')
-        th.col-6.text-center= t('simple_form.labels.sender.email')
+        th.col-2.text-center= t('simple_form.labels.sender.name')
+        th.col-8.text-center= t('simple_form.labels.sender.email')
     tbody
       - senders.each do |sender|
         tr.d-flex
           td.col-2.text-center scope="row"
-            .btn-group.btn-group-sm
-              == link_to t('helpers.edit'), edit_admin_sender_path(sender), class: 'btn btn-primary'
-              == link_to t('helpers.delete'), admin_sender_path(sender), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'btn btn-danger'
-          td.col-4.text-center= sender.name
-          td.col-6.text-center= sender.email
+            - unless current_user.email == sender.email
+              .btn-group.btn-group-sm
+                == link_to t('helpers.edit'), edit_admin_sender_path(sender), class: 'btn btn-primary'
+                == link_to t('helpers.delete'), admin_sender_path(sender), method: :delete, data: {confirm: t('helpers.are_you_sure')}, class: 'btn btn-danger'
+          td.col-2.text-center= sender.name
+          td.col-8.text-center= sender.email
 

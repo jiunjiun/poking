@@ -29,7 +29,7 @@ class Admin::ObserversController < AdminController
     if observer.update observer_params
       redirect_to admin_observer_path(observer), notice: t('helpers.successfully_updated')
     else
-      flash[:alert] = I18n.t('helpers.update_fail', message: shop.errors.full_messages.join)
+      flash[:alert] = I18n.t('helpers.update_fail', message: observer.errors.full_messages.join)
       render :edit
     end
   end

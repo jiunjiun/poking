@@ -24,7 +24,7 @@ class Admin::SendersController < AdminController
     if sender.update sender_params
       redirect_to admin_senders_path, notice: t('helpers.successfully_updated')
     else
-      flash[:alert] = I18n.t('helpers.update_fail', message: shop.errors.full_messages.join)
+      flash[:alert] = I18n.t('helpers.update_fail', message: sender.errors.full_messages.join)
       render :edit
     end
   end
