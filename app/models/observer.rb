@@ -119,6 +119,6 @@ class Observer < ApplicationRecord
   end
 
   def setup_sender
-    self.observer_senders.create sender_id: self.user.senders.first.id
+    self.observer_senders.create sender_id: self.user.senders.first.id, enable: true
   end
 end

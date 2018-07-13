@@ -1,7 +1,7 @@
 == simple_form_for [:admin, observer, sender], method: :put, html: { autocomplete: 'off', multipart: true } do |f|
   .card.mb-4
     table.table.card-table
-      thead.thead-light
+      thead.thead-dark
         tr.d-flex
           th.col-1
           th.col-2.text-center= t('simple_form.labels.sender.name')
@@ -33,6 +33,6 @@
 
 
     .card-footer.text-muted
-      == f.button :submit, t('helpers.edit'), class: 'btn-primary btn-3d'
+      == f.button :submit, t('helpers.edit'), class: 'btn btn-primary'
       | &nbsp;&nbsp;
-      == link_to t('helpers.back'), admin_observer_path(observer), class: 'btn btn-default btn-3d'
+      == link_to t('helpers.back'), admin_observer_path(observer), class: 'btn btn-default'
