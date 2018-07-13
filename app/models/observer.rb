@@ -66,6 +66,8 @@ class Observer < ApplicationRecord
   end
 
   def statistics
+    return @statistics if @statistics
+
     lastday_response_time_avg   = ((self.lastday_records.average(:response_time) || 0)   * 1000).to_i
     last7day_response_time_avg  = ((self.last7day_records.average(:response_time) || 0)  * 1000).to_i
     lastmonth_response_time_avg = ((self.lastmonth_records.average(:response_time) || 0) * 1000).to_i
@@ -82,7 +84,7 @@ class Observer < ApplicationRecord
     lastmonth_count      = self.lastmonth_records.count
     lastmonth_down_rate  = ((lastmonth_count - lastmonth_down_count) / lastmonth_count.to_f * 100).round(2)
 
-    {
+    @statistics ||= {
       lastday_response_time_avg: lastday_response_time_avg,
       last7day_response_time_avg: last7day_response_time_avg,
       lastmonth_response_time_avg: lastmonth_response_time_avg,

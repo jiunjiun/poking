@@ -46,7 +46,7 @@
         .d-flex.align-items-center.position-relative style="height:140px;"
           .w-100.position-absolute style="height:140px;top:0;"
             canvas#statistics-chart-5 height="280" style=("display: block; height: 140px; width: 275px;") width="550"
-          .w-100.text-center.display-4.text-success
+          .w-100.text-center.display-4 class="#{rate_color(observer.statistics[:lastday_down_rate])}"
             = observer.statistics[:lastday_down_rate]
             | %
 

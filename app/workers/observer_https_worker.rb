@@ -49,11 +49,13 @@ class ObserverHttpsWorker
           reason: reason
         })
 
-        observer.records.create({
-          event_type: event_type,
-          response_time: response_time,
-          response_code: response_code,
-        })
+        if observer.events.last.event_type == ObserverEvent::Type::UP
+          observer.records.create({
+            event_type: event_type,
+            response_time: response_time,
+            response_code: response_code,
+          })
+        end
 
         ObserverHttpsWorker.perform_in(observer.interval.to_i.minutes, observer.id)
       end
