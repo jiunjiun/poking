@@ -126,6 +126,10 @@ zh-TW:
     send_confirmaction:  重新發送
     reset_password_desc: 填入您的 email，將會寄重設密碼信
     send_password_reset: 寄送重設密碼信
+    change_my_password:  重設您的密碼
+    new_password:        新密碼
+    confirm_password:    確認密碼
+    minimum_password_length: 最少 %{length} 字元
 
   observers:
     info:   資訊

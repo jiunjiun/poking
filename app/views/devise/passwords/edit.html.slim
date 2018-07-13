@@ -20,20 +20,26 @@
                 path d="M95.73,22l-7-18.69a5,5,0,0,0-1.64-2.21L74.1,35l8.33,21.79Z" fill="url(#e)" transform="translate(-.1)"
                 path d="M112.73,23l-8.31,22.12,12.66,33.7a5,5,0,0,0,1.45-2l7.3-18.93Z" fill="url(#d)" transform="translate(-.1)"
         /! / Logo
-        h5.text-center.text-muted.font-weight-normal.mb-4 Login
+        h5.text-center.text-muted.font-weight-normal.mb-4 Change your password
         /! Form
-        == simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        == simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
           == f.error_notification
-          .form-group
+          == f.input :reset_password_token, as: :hidden
+          == f.full_error :reset_password_token
+
+          == f.input :password, label: t('users.new_password'), required: true, autofocus: true, hint: (t('users.minimum_password_length', length: @minimum_password_length) if @minimum_password_length)
+          == f.input :password_confirmation, label: t('users.confirm_password'), required: true
+
+          / .form-group
             label.form-label Username / Email
             == f.text_field :login, autofocus: true, class: 'form-control', placeholder: 'Username / Email'
-          .form-group
+          / .form-group
             label.form-label.d-flex.justify-content-between.align-items-end
               div Password
               == link_to t('users.forgot_password'), new_user_password_path, class: 'd-block small'
             == f.password_field :password, class: 'form-control', placeholder: 'Password'
           .d-flex.justify-content-md-center
-            == f.button :submit, t('sign_in'), class: 'btn btn-primary btn-block'
+            == f.button :submit, t('users.change_my_password'), class: 'btn btn-primary btn-block'
         /! / Form
       .card-footer.py-3.px-4.px-sm-5
         .text-center.text-muted
