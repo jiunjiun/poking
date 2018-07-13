@@ -1,6 +1,6 @@
 class Admin::SendersController < AdminController
   expose :senders, -> { current_user.senders }
-  expose :sender, scope: -> { current_user.senders }
+  expose :sender, build: ->(sender_params, scope){ scope.build(sender_params) }, scope: -> { current_user.senders }
 
   def index
   end

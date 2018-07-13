@@ -3,7 +3,7 @@ class CreateObserverSenders < ActiveRecord::Migration[5.2]
     create_table :observer_senders do |t|
       t.references :observer, foreign_key: true
       t.references :sender, foreign_key: true
-      t.boolean :enalbe, default: true, index: true
+      t.boolean :enable, default: false, index: true
 
       t.timestamps
     end

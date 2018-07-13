@@ -4,9 +4,15 @@ class SystemMailer < ApplicationMailer
   def alert observer
     if observer.present?
       @observer = observer
-      sender_mails = observer.senders.pluck(:email)
 
-      mail(to: sender_mails, subject: 'title')
+      mail(to: sender_mails(observer), subject: 'title')
+    end
+  end
+
+  private
+  def sender_mails observer
+    observer.observer_senders.where(enable: true).map do |observer_sender|
+      observer_sender.sender.email
     end
   end
 end

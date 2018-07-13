@@ -32,7 +32,8 @@
           / = observer.name.upcase
           == link_to observer.name.upcase, admin_observer_path(observer), class: 'text-dark'
           | &nbsp;&nbsp;
-          == observer_event_type_tag(observer.events.last.event_type)
+          - if observer.events.last
+            == observer_event_type_tag(observer.events.last.event_type)
           .card-header-elements.ml-auto
             .btn-group
               button.btn.btn-sm.btn-default.icon-btn.borderless.btn-round.md-btn-flat.dropdown-toggle.hide-arrow aria-expanded="false" data-toggle="dropdown" type="button"

@@ -2,6 +2,7 @@ class Admin::ObserversController < AdminController
   expose :observers, -> { current_user.observers }
   expose :observer, scope: -> { observers }
   expose :observer_events, -> { observer.events }
+  expose :observer_senders, -> { observer.observer_senders.where(enable: true) }
   expose :interval_range, -> { intervals }
   expose :statistics, -> { observer.statistics }
 

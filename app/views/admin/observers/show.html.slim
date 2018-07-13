@@ -2,7 +2,8 @@
   h1.font-weight-bold.mb-0
     = observer.name.upcase
     | &nbsp;
-    == observer_event_type_tag(observer.events.last.event_type)
+    - if observer.events.last
+      == observer_event_type_tag(observer.events.last.event_type)
   .btn-group.btn-group-sm
     - case observer.status
     - when Observer::Status::STARTED
@@ -92,29 +93,29 @@
           th.text-center data-name="duration"
             = t('simple_form.labels.observer_event.duration_at')
 
-/ .card.mb-4
-/   .card-header.with-elements
-/     a.d-flex.justify-content-between.text-dark.collapsed aria-expanded="false" data-toggle="collapse" href="#accordion2-1"
-/       = t('observers.senders')
+.card.mb-4
+  .card-header.with-elements
+    a.d-flex.justify-content-between.text-dark.collapsed aria-expanded="false" data-toggle="collapse" href="#sender_accordion"
+      = t('observers.senders')
 
-/     .card-header-elements.ml-md-auto
-/       == link_to t('helpers.edit'), events_admin_observer_path(observer, format: 'xlsx'), class: 'btn btn-xs btn-primary'
+    .card-header-elements.ml-md-auto
+      == link_to t('helpers.edit'), edit_admin_observer_senders_path(observer), class: 'btn btn-xs btn-primary'
 
-/   #accordion2-1.collapse data-parent="#accordion2"
-/     ul.list-group.list-group-flush.px-2
-/       - observer.senders.each do |sender|
-/         li.list-group-item
-/           strong
-/             = sender.name
-/             | &nbsp;-&nbsp;
-/             = sender.email
+  #sender_accordion.collapse data-parent="#sender_accordion"
+    ul.list-group.list-group-flush.px-2
+      - observer_senders.each do |observer_sender|
+        li.list-group-item
+          strong
+            = observer_sender.sender.name
+            | &nbsp;-&nbsp;
+            = observer_sender.sender.email
 
 .card.mb-2
   .card-header
-    a.d-flex.justify-content-between.text-dark.collapsed aria-expanded="false" data-toggle="collapse" href="#accordion2-1"
+    a.d-flex.justify-content-between.text-dark.collapsed aria-expanded="false" data-toggle="collapse" href="#info_accordion"
       = t('observers.info')
       .collapse-icon
-  #accordion2-1.collapse data-parent="#accordion2" style=""
+  #info_accordion.collapse data-parent="#info_accordion" style=""
     ul.list-group.list-group-flush.px-2
       li.list-group-item
         strong
