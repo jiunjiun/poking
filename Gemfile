@@ -169,7 +169,6 @@ gem 'mailgun_rails'
 
 # email preview
 gem 'letter_opener', group: :development
-gem 'premailer-rails'
 
 # soft delete
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
@@ -233,7 +232,7 @@ gem "i18n-js"
 # gem 'barby', require: %w(barby barby/barcode/code_128 barby/outputter/html_outputter)
 
 # Style
-gem 'bootstrap', '~> 4.1.1'
+# gem 'bootstrap', '~> 4.1.1'
 gem 'slim'
 gem 'slim-rails'
 # gem 'font-awesome-rails'
