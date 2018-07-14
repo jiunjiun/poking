@@ -233,7 +233,7 @@ gem "i18n-js"
 # gem 'barby', require: %w(barby barby/barcode/code_128 barby/outputter/html_outputter)
 
 # Style
-# gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.1.1'
 gem 'slim'
 gem 'slim-rails'
 # gem 'font-awesome-rails'

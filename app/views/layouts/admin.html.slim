@@ -12,8 +12,8 @@ html.default-style.layout-collapsed
 
     == Gon::Base.render_data
 
-    / - if GoogleAnalytics.valid_tracker?
-      == analytics_init
+    - if Rails.env.productino?
+      == render 'common/gtag'
 
     == csrf_meta_tags
     == csp_meta_tag
