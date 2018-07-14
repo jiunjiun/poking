@@ -28,7 +28,7 @@ module Kvs
   end
 
   module Observer
-    class Type < KeyValues::Base
+    class Type < Kvs::Base
       self.data = [
         { id: 1, code: ::Observer::Type::HTTPs,     name: I18n.t('observers.type.https') },
         { id: 2, code: ::Observer::Type::PING,      name: I18n.t('observers.type.ping') },
@@ -38,11 +38,17 @@ module Kvs
   end
 
   module ObserverEvent
-    class Type < KeyValues::Base
+    class Type < Kvs::Base
       self.data = [
         { id: 1, code: ::ObserverEvent::Type::UP,     name: I18n.t('observer_events.type.up') },
         { id: 2, code: ::ObserverEvent::Type::DOWN,   name: I18n.t('observer_events.type.down') },
       ]
     end
+  end
+
+  class Region < Kvs::Base
+    self.data = [
+      { id: 1, code: ObserverRegion::Type::ASIA_EAST1, enable: true, continent: :asia, location: 'Changhua County, Taiwan' },
+    ]
   end
 end

@@ -2,8 +2,10 @@ class ObserverHttpsWorker
   include Sidekiq::Worker
   include Sidekiq::Status::Worker
 
+  REGION = 'asia-east1'
+
   sidekiq_options retry: 0
-  # sidekiq_options queue: 'haha'
+  sidekiq_options queue: REGION
 
   def perform observer_id, opts={}
     observer = Observer.find_by_id observer_id
@@ -52,12 +54,14 @@ class ObserverHttpsWorker
         if observer.events.last.event_type == ObserverEvent::Type::UP
           observer.records.create({
             event_type: event_type,
+            region: REGION,
             response_time: response_time,
             response_code: response_code,
           })
         end
 
-        ObserverHttpsWorker.perform_in(observer.interval.to_i.minutes, observer.id)
+        scheduled_job_id = ObserverHttpsWorker.perform_in(observer.interval.to_i.minutes, observer.id)
+        $redis.set("observer_#{observer.id}", scheduled_job_id)
       end
     end
   end
