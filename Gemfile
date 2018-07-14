@@ -166,6 +166,7 @@ gem 'decent_exposure', '3.0.2'
 
 # email
 gem 'mailgun_rails'
+gem 'premailer-rails'
 
 # email preview
 gem 'letter_opener', group: :development
