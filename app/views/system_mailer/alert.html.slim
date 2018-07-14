@@ -1,2 +1,17 @@
-h1= @observer.name
-h2= @observer.events.last.event_type.upcase
+.authentication-wrapper.authentication-2.px-4
+  .authentication-inner.py-5
+    /! Form
+    .card
+      .p-4.p-sm-5
+        - case @observer.events.last.event_type
+        - when ObserverEvent::Type::UP
+          .display-1.lnr.lnr-checkmark-circle.text-center.text-success.mb-4
+        - when ObserverEvent::Type::DOWN
+          .display-1.lnr.lnr-warning.text-center.text-danger.mb-4
+        h1.text-center.mb-4= @observer.name.upcase
+        - case @observer.events.last.event_type
+        - when ObserverEvent::Type::UP
+          h3.text-center.mb-4.text-success= @observer.events.last.event_type.upcase
+        - when ObserverEvent::Type::DOWN
+          h3.text-center.mb-4.text-danger= @observer.events.last.event_type.upcase
+

@@ -1,0 +1,14 @@
+//= require Appwork/fonts/linearicons
+
+//= require Appwork/rtl/bootstrap
+//= require Appwork/rtl/appwork
+//= require Appwork/rtl/theme-corporate
+//= require Appwork/rtl/colors
+//= require Appwork/rtl/uikit
+
+//= require Appwork/pages/authentication
+
+.authentication-wrapper.authentication-1, .authentication-wrapper.authentication-2, .authentication-wrapper.authentication-4 {
+  margin-top: -120px;
+}
+

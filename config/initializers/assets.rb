@@ -20,3 +20,4 @@ Rails.application.config.assets.precompile += lib_files
 Rails.application.config.assets.precompile += %w( sign.js sign.css )
 Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( devise_mail.css )
+Rails.application.config.assets.precompile += %w( observer_mail.css )
