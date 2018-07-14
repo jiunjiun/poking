@@ -32,7 +32,7 @@ module Admin::ObserversHelper
     if event.duration_at.present?
       time_ago_in_words(Time.at(event.created_at.to_i - event.duration_at))
     else
-      time_ago_in_words(Time.at(Time.now.to_i - event.created_at.to_i))
+      time_ago_in_words(event.created_at.to_i)
     end
   end
 end
