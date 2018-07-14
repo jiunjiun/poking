@@ -10,10 +10,12 @@ module AssetsHelper
   end
 
   def inline_js path
-    "<script>#{inline_file path}</script>".html_safe
+    _inline_file = inline_file("#{path}.js")
+    "<script>#{_inline_file}</script>".html_safe
   end
 
   def inline_css path
-    "<style>#{inline_file path}</style>".html_safe
+    _inline_file = inline_file("#{path}.css")
+    "<style>#{_inline_file}</style>".html_safe
   end
 end
