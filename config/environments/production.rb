@@ -100,4 +100,6 @@ Rails.application.configure do
     api_key: Rails.application.credentials[Rails.env.to_sym][:mailgun][:api_key],
     domain:  Rails.application.credentials[Rails.env.to_sym][:mailgun][:domain],
   }
+
+  Rails.application.routes.default_url_options[:host] = Settings.domain.host
 end
