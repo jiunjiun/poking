@@ -45,4 +45,6 @@ Rails.application.routes.draw do
 
     root 'home#index'
   end
+
+  root 'home#index'
 end
