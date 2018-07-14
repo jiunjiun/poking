@@ -5,6 +5,7 @@ class Observer < ApplicationRecord
   has_many :records, class_name: 'ObserverRecord'
   has_many :observer_senders
   has_many :senders, through: :observer_senders
+  has_many :regions, class_name: 'ObserverRegion'
 
   acts_as_paranoid
 
@@ -126,10 +127,14 @@ class Observer < ApplicationRecord
 
   def trigger_worker
     sleep 0.2
-    ObserverHttpsWorker.perform_async self.id
+
+    self.regions.each do |region|
+      ObserverHttpsWorker.set(queue: region.region_type).perform_async self.id
+    end
   end
 
   def setup_sender
     self.observer_senders.create sender_id: self.user.senders.first.id, enable: true
+    self.regions.create region_type: ObserverRegion::Type::ASIA_EAST1, enable: true
   end
 end
