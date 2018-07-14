@@ -1,12 +1,170 @@
-//= require Appwork/fonts/linearicons
+// require Appwork/fonts/linearicons
 
-//= require Appwork/rtl/bootstrap
-//= require Appwork/rtl/appwork
-//= require Appwork/rtl/theme-corporate
-//= require Appwork/rtl/colors
-//= require Appwork/rtl/uikit
+// require Appwork/rtl/bootstrap
+// require Appwork/rtl/appwork
+// require Appwork/rtl/theme-corporate
+// require Appwork/rtl/colors
+// require Appwork/rtl/uikit
 
-//= require Appwork/pages/authentication
+// require Appwork/pages/authentication
+
+@font-face {
+font-family: Linearicons-Free; src: url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.eot?#iefix) format('embedded-opentype'),url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.woff2) format('woff2'),url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.ttf) format('truetype'),url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.woff) format('woff'),url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.svg#Linearicons-Free) format('svg'); font-weight: 400; font-style: normal;
+}
+
+body {
+    text-shadow: none !important;
+    margin: 0;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    min-width: 992px !important;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    font-size: .894rem;
+    font-weight: 400;
+    line-height: 1.47;
+    color: #4E5155;
+    text-align: left;
+    -moz-font-feature-settings: "liga" on;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    background: #f8f8f8;
+}
+
+.authentication-wrapper.authentication-2.px-4 {
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+    display: flex;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    min-height: 100vh;
+    width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-top: -120px;
+}
+
+.authentication-inner.py-5.reset_password {
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    width: 100%;
+    max-width: 500px;
+}
+
+.card {
+    text-shadow: none !important;
+    border: 1px solid rgba(24,28,33,0.06);
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+}
+
+.p-4.p-sm-5 {
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    padding: 3rem !important;
+}
+
+p {
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    orphans: 3;
+    widows: 3;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.btn.btn-primary.btn-block {
+    text-shadow: none !important;
+    padding: .438rem 1.125rem;
+    border: 1px solid transparent;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    background-color: #26B4FF;
+    -webkit-text-decoration-skip: objects;
+    display: block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: .894rem;
+    line-height: 1.54;
+    border-radius: .25rem;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+.display-1.lnr.lnr-checkmark-circle.text-center.text-success.mb-4 {
+    speak: none;
+    font: 300 4rem/1.1 Linearicons-Free;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 1.5rem !important;
+    color: #02BC77 !important;
+}
+.lnr-checkmark-circle:before {
+    content: "\e87f";
+}
+.text-center {
+  text-align: center;
+}
+
 
 .authentication-wrapper.authentication-1, .authentication-wrapper.authentication-2, .authentication-wrapper.authentication-4 {
   margin-top: -120px;
