@@ -109,6 +109,17 @@ class Observer < ApplicationRecord
     }
   end
 
+  def worker_status
+    job_id = $redis.get("observer_#{self.id}")
+  end
+
+  def check_worker
+    # https://stackoverflow.com/questions/28088620/how-do-you-go-about-rescheduling-a-job-in-sidekiq
+    if self.status == Observer::Status::STARTED and !Sidekiq::ScheduledSet.new.find_job(self.worker_status)
+      trigger_worker
+    end
+  end
+
   private
   def setup
   end
