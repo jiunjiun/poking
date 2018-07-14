@@ -35,6 +35,10 @@ class User < ApplicationRecord
     @login || self.username || self.email
   end
 
+  def devise_mailer
+    DeviserMailer
+  end
+
   User::Role.constants.each do |role|
     class_eval %Q{
       def is_#{role.downcase}?
