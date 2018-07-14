@@ -5,7 +5,7 @@ module AssetsHelper
       return '' unless asset
       asset.source
     else
-      File.read(File.join(Rails.root, 'public', asset_path(path)))
+      File.read(File.join(Rails.root, 'public', ActionController::Base.helpers.asset_path(path)))
     end
   end
 
