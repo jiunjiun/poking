@@ -445,6 +445,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rails-erd
   rails-i18n
+  redis (~> 4.0)
   rest-client
   rspec-rails
   rubyzip (>= 1.2.1)
