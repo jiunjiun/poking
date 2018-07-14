@@ -169,6 +169,7 @@ gem 'mailgun_rails'
 
 # email preview
 gem 'letter_opener', group: :development
+gem 'premailer-rails'
 
 # soft delete
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
