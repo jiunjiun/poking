@@ -1,5 +1,5 @@
 class SystemMailer < ApplicationMailer
-  default from: "services@#{Settings.domain.url}"
+  default from: "services@#{Settings.domain.host}"
 
   def alert observer
     if observer.present?
@@ -7,7 +7,7 @@ class SystemMailer < ApplicationMailer
 
       Rails.logger.info { "[SystemMailer][sender_mails]: #{sender_mails(observer)}" }
 
-      mail(to: sender_mails(observer), subject: 'title')
+      mail(to: sender_mails(observer), subject: "Monitor is #{observer.events.last.event_type.upcase}: #{observer.name.upcase}")
     end
   end
 
