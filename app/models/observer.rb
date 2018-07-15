@@ -12,7 +12,7 @@ class Observer < ApplicationRecord
   validates_presence_of :name, :interval
 
   before_create :setup
-  after_create :setup_sender
+  after_create :after_create_setup
   after_create :trigger_worker
 
   module Type
@@ -125,16 +125,16 @@ class Observer < ApplicationRecord
   def setup
   end
 
+  def after_create_setup
+    self.observer_senders.create sender_id: self.user.senders.first.id, enable: true
+    self.regions.create region_type: ObserverRegion::Type::ASIA_EAST1, enable: true
+  end
+
   def trigger_worker
-    sleep 0.2
+    sleep 0.5
 
     self.regions.each do |region|
       ObserverHttpsWorker.set(queue: region.region_type).perform_async self.id
     end
-  end
-
-  def setup_sender
-    self.observer_senders.create sender_id: self.user.senders.first.id, enable: true
-    self.regions.create region_type: ObserverRegion::Type::ASIA_EAST1, enable: true
   end
 end
