@@ -158,11 +158,15 @@ p {
     margin-bottom: 1.5rem !important;
     color: #02BC77 !important;
 }
+
 .lnr-checkmark-circle:before {
     content: "\e87f";
 }
 .text-center {
   text-align: center;
+}
+.text-danger {
+    color: #d9534f !important;
 }
 
 .authentication-wrapper.authentication-1, .authentication-wrapper.authentication-2, .authentication-wrapper.authentication-4 {
