@@ -10,9 +10,8 @@ class ObserverHttpsWorker
   def perform observer_id, opts={}
     observer = Observer.find_by_id observer_id
 
-    Rails.logger.debug { " -- [ObserverHttpsWorker] observer_id: #{observer_id}" }
-    Rails.logger.debug { " -- [ObserverHttpsWorker] observer: #{observer}" }
-    Rails.logger.debug { " -- [ObserverHttpsWorker] observer: #{observer.to_json}" }
+    Rails.logger.info { "[ObserverHttpsWorker] observer_id: #{observer_id}" }
+    Rails.logger.info { "[ObserverHttpsWorker] observer: #{observer.to_json}" }
 
     if observer.present?
       event_type    = nil
@@ -42,7 +41,7 @@ class ObserverHttpsWorker
         reason = e
 
       rescue Exception => e
-        Rails.logger.debug { "[ObserverHttpsWorker][e]: #{e}" }
+        Rails.logger.info { "[ObserverHttpsWorker][e]: #{e}" }
 
         event_type = ObserverEvent::Type::DOWN
         response_code = e.try(:response).try(:code)
