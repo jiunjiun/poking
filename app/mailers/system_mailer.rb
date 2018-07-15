@@ -5,6 +5,8 @@ class SystemMailer < ApplicationMailer
     if observer.present?
       @observer = observer
 
+      Rails.logger.info { "[SystemMailer][sender_mails]: #{sender_mails(observer)}" }
+
       mail(to: sender_mails(observer), subject: 'title')
     end
   end
@@ -13,6 +15,6 @@ class SystemMailer < ApplicationMailer
   def sender_mails observer
     observer.observer_senders.where(enable: true).map do |observer_sender|
       observer_sender.sender.email
-    end
+    end.uniq.compact
   end
 end
