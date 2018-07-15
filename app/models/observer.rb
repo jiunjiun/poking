@@ -134,6 +134,7 @@ class Observer < ApplicationRecord
     sleep 0.5
 
     self.regions.each do |region|
+      Rails.logger.debug { " -- [Observer][TriggerWorker]: #{self.id}" }
       ObserverHttpsWorker.set(queue: region.region_type).perform_async self.id
     end
   end

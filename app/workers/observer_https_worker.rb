@@ -10,6 +10,10 @@ class ObserverHttpsWorker
   def perform observer_id, opts={}
     observer = Observer.find_by_id observer_id
 
+    Rails.logger.debug { " -- [ObserverHttpsWorker] observer_id: #{observer_id}" }
+    Rails.logger.debug { " -- [ObserverHttpsWorker] observer: #{observer}" }
+    Rails.logger.debug { " -- [ObserverHttpsWorker] observer: #{observer.to_json}" }
+
     if observer.present?
       event_type    = nil
       response      = nil
