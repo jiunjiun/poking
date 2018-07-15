@@ -13,7 +13,7 @@ class Observer < ApplicationRecord
 
   before_create :setup
   after_create :after_create_setup
-  after_create :trigger_worker
+  after_commit :trigger_worker, on: :create
 
   module Type
     HTTPs    = 'HTTPs'
