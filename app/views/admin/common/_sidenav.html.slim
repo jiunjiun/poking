@@ -27,6 +27,7 @@
         div= t('admin.observer')
       ul.sidenav-menu
         - observers.each do |observer|
-          li.sidenav-item
-            == link_to admin_observer_path(observer), class: 'sidenav-link' do
-              div= observer.name.upcase
+          - if observer.id.present?
+            li.sidenav-item
+              == link_to admin_observer_path(observer), class: 'sidenav-link' do
+                div= observer.name.upcase
